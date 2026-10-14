@@ -1,5 +1,6 @@
 USE my_database; 
 
+
 CREATE TABLE Especes(
     id INTEGER PRIMARY KEY,
     Nom_commun TEXT, 
