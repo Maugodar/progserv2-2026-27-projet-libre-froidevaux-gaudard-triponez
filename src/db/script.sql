@@ -13,3 +13,11 @@ CREATE TABLE Especes(
     Image VARCHAR(300),
     Type_especes VARCHAR(50)
 )
+
+CREATE TABLE Personne (
+    id INTEGER PRIMARY KEY, 
+    Nom VARCHAR(80),
+    Prenom VARCHAR (80), 
+    Email VARCHAR(60),
+    mot_de_passe VARCHAR(100)
+)
