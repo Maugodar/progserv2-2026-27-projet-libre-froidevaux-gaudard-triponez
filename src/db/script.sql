@@ -87,3 +87,30 @@ CREATE TABLE Point_carte (
     id_utilisateur INTEGER REFERENCES Utilisateur(id),
     id_site_plongee INTEGER REFERENCES Site_plongee(id)
 )
+
+CREATE TABLE Poisson (
+    id INTEGER PRIMARY KEY, 
+    taille_max FLOAT,
+    milieu VARCHAR(50),
+    regime VARCHAR(100),
+    id_poissons INTEGER REFERENCES Poisson(id),
+    id_especes INTEGER REFERENCES Especes(id)
+)
+
+CREATE TABLE Mammiferes (
+    id INTEGER PRIMARY KEY, 
+    taille_moyenne FLOAT,
+    regime VARCHAR(100),
+    statu_conservation VARCHAR(60),
+    id_poissons INTEGER REFERENCES Poisson(id),
+    id_especes INTEGER REFERENCES Especes(id)
+)
+
+CREATE TABLE Coraux (
+    id INTEGER PRIMARY KEY, 
+    type_squelette VARCHAR(300),
+    forme VARCHAR(100),
+    couleur VARCHAR(50),
+    id_poissons INTEGER REFERENCES Poisson(id),
+    id_especes INTEGER REFERENCES Especes(id)
+)
