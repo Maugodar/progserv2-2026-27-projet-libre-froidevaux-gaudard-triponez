@@ -9,7 +9,7 @@ $dsn = "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME . ";c
 
 $pdo = new PDO($dsn, DB_USER, DB_PASSWORD);
 
-$sql = "SELECT * FROM my_table";
+$sql = "SELECT * FROM Especes";
 
 $stmt = $pdo->prepare($sql);
 
