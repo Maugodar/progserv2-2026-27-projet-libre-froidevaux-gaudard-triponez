@@ -1,13 +1,19 @@
 <?php
-const DB_HOST = 'mariadb';
-const DB_PORT = 3306;
-const DB_NAME = 'my_database';
-const DB_USER = 'username';
-const DB_PASSWORD = 'password';
+const DATABASE_CONFIGURATION_FILE = __DIR__ . '/../config/database.ini';
 
-$dsn = "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME . ";charset=utf8mb4";
+$config = parse_ini_file(DATABASE_CONFIGURATION_FILE, true);
 
-$pdo = new PDO($dsn, DB_USER, DB_PASSWORD);
+if (!$config) {
+    throw new Exception("Erreur lors de la lecture du fichier de configuration : " . DATABASE_CONFIGURATION_FILE);
+}
+
+$host = $config['host'];
+$port = $config['port'];
+$database = $config['database'];
+$username = $config['username'];
+$password = $config['password'];
+
+$pdo = new PDO("mysql:host=$host;port=$port;charset=utf8mb4", $username, $password);
 
 $sql = "SELECT * FROM Especes";
 
