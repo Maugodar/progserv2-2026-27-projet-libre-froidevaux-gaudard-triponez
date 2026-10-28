@@ -201,3 +201,9 @@ principales pages et interfaces de TeamBoard.
 
 **Lien vers la maquette Figma :
 **https://www.figma.com/design/jJRh51iHL7Uik2ykq2VzWW/Untitled?node-id=0-1&t=UKOG68YLylef03Og-1
+
+# Site web
+
+Le site web a été crée et déployer via Infomaniak.
+
+**Lien vers le site web : **https://www.mon-espace-marin.ch/
