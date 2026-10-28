@@ -13,7 +13,7 @@ $database = $config['database'];
 $username = $config['username'];
 $password = $config['password'];
 
-$pdo = new PDO("mysql:host=$host;port=$port;charset=utf8mb4", $username, $password);
+$pdo = new PDO("mysql:host=$host;port=$port;database=$database; charset=utf8mb4", $username, $password);
 
 $sql = "SELECT * FROM Especes";
 
