@@ -1,0 +1,32 @@
+id_plongee;date_plongee;profondeur_max;duree;temps_fond;temperature;visibilite;notes_personnelles;notation;id_utilisateur;id_site_plongee
+1;22.03.2025;36;52;36;24;35;Tombant vertigineux, grand banc de barracudas.;5;5;9
+2;24.03.2025;32;50;35;24;30;Napoléon croisé sur le tombant, requin gris au loin.;5;5;9
+3;12.04.2025;34;54;38;29;28;Raie manta géante à la station de nettoyage.;5;10;10
+4;24.05.2025;25;47;33;17;12;Mérou brun près du tombant, léger courant.;4;2;4
+5;14.06.2025;24;48;32;19;15;Belle gorgone rouge sur le tombant, mérous curieux.;5;1;1
+6;19.07.2025;29;42;28;18;18;Plongée profonde sur les parois, corail rouge sous les surplombs.;5;2;1
+7;26.07.2025;14;44;30;15;8;Un phoque gris nous a suivis, eau fraîche.;5;3;5
+8;02.08.2025;27;45;30;20;20;Banc de sardines, très bonne palanquée.;4;1;2
+9;17.08.2025;15;48;35;29;15;Coraux cornes d'élan en faible profondeur, mérou goliath sous un surplomb.;4;6;11
+10;30.08.2025;12;40;28;16;10;Laminaires et labres, visibilité moyenne.;3;3;5
+11;06.09.2025;22;50;35;23;25;Eau très claire, gorgones blanches sur toute la paroi.;5;1;3
+12;12.09.2025;26;46;32;27;25;Beaux acropores tabulaires, chants de baleines entendus.;5;4;8
+13;14.09.2025;23;50;36;27;22;Corail bleu repéré sur la pente externe.;4;4;8
+14;20.09.2025;26;46;31;21;16;Banc de dorades et gorgones blanches.;4;7;1
+15;27.09.2025;18;45;30;16;12;Marsouin commun aperçu au retour, phoque gris sur les rochers.;4;8;5
+16;18.10.2025;30;46;32;21;18;Hammerheads en grand nombre, requin-baleine en surface.;5;10;12
+17;09.11.2025;30;55;40;29;30;Requin-baleine dans le bleu, rencontre inoubliable.;5;5;10
+18;15.11.2025;12;40;26;26;14;Première plongée tropicale, eau chaude.;5;9;7
+19;27.12.2025;13;42;28;25;12;Eau plus fraîche, corail pilier repéré à l'écart.;4;6;11
+20;31.01.2026;24;50;36;19;22;Mérou brun et banc de sardines.;4;8;6
+21;14.02.2026;22;52;38;19;20;Ange de mer ensablé sur le fond, rencontre rare.;5;2;6
+22;21.02.2026;15;45;31;28;20;Poissons colorés et acropores tabulaires, un grand dauphin en surface.;4;9;7
+23;08.03.2026;20;49;34;28;18;Récif abîmé par la houle mais beaux acropores résiduels.;3;4;7
+24;14.03.2026;24;52;36;25;22;Jardin de coraux, pépinière d'acropores cornes de cerf.;4;10;11
+25;18.04.2026;20;51;38;14;10;Eau encore froide, mérou brun et corail rouge.;3;7;4
+26;19.04.2026;28;48;34;25;32;Stylophores roses abondants en eau peu profonde.;4;8;9
+27;13.06.2026;16;43;30;21;20;Première plongée en Méditerranée, sardines nombreuses.;4;3;2
+28;04.07.2026;24;47;32;19;22;Belles gorgones rouges à 24 m.;4;7;2
+29;11.07.2026;30;45;30;20;20;Courants forts, banc de requins-marteaux halicornes.;5;5;12
+30;15.08.2026;16;42;29;24;18;Plongée facile, mérous en bordure du tombant.;4;9;1
+31;05.09.2026;30;49;34;26;30;Tombant de la passe, requin gris et acropores tabulaires.;5;10;8

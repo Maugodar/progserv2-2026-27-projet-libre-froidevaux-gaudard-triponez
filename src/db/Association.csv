@@ -1,0 +1,5 @@
+id_association;nom;description;image ;site_web;id_admin
+1;Océan Vivant;Association de sensibilisation à la protection des océans et des récifs coralliens.;logos/ocean_vivant.png;https://www.ocean-vivant.example;1
+2;Récifs Sentinelles;Suivi citoyen de l'état de santé des récifs par les plongeurs.;logos/recifs_sentinelles.png;https://www.recifs-sentinelles.example;1
+3;Mer et Mémoire;Valorisation du patrimoine marin et des espèces menacées de Méditerranée.;logos/mer_et_memoire.png;https://www.mer-et-memoire.example;2
+4;Plongeurs pour la Biodiversité;Réseau de plongeurs bénévoles engagés dans des comptages d'espèces.;logos/plongeurs_biodiversite.png;https://www.plongeurs-biodiversite.example;2

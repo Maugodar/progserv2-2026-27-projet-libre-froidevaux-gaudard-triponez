@@ -1,0 +1,31 @@
+id_mammiferes;id_especes;taille_moyenne;regime;statut_conservation
+1;31;01.avr;Carnivore (poissons et calmars);CR
+2;32;14;Planctonophage (copépodes);CR
+3;33;12;Carnivore (poissons et calmars);CR
+4;34;01.mai;Carnivore (poissons et calmars);CR
+5;35;02.mars;Carnivore (poissons et calmars);CR
+6;36;25;Planctonophage (krill);EN
+7;37;15;Planctonophage (copépodes et petits poissons);EN
+8;38;21;Planctonophage (krill et petits poissons);VU
+9;39;12;Teuthophage (calmars);VU
+10;40;02.juil;Herbivore (herbiers);VU
+11;41;3.0;Herbivore (herbiers);VU
+12;42;3.0;Herbivore (plantes aquatiques);VU
+13;43;01.févr;Carnivore (oursins et invertébrés);EN
+14;44;02.mai;Carnivore (phoques);VU
+15;45;02.avr;Carnivore (poissons et poulpes);VU
+16;46;02.févr;Carnivore (poissons de fond et céphalopodes);EN
+17;47;01.mars;Carnivore (poissons et calmars);EN
+18;48;06.mai;Piscivore (saumon chinook);EN (ESA, population résidente du Sud)
+19;49;02.mars;Carnivore (poissons et calmars);EN
+20;50;13.mai;Benthophage (crustacés du fond);CR (population occidentale)
+21;51;01.mai;Carnivore (poissons et calmars);LC
+22;52;3.0;Carnivore (poissons et calmars);LC
+23;53;2.0;Carnivore (poissons et calmars);LC
+24;54;02.févr;Carnivore (poissons et calmars);LC
+25;55;3.0;Teuthophage (calmars);LC
+26;56;06.mai;Piscivore (thon rouge);CR (sous-population ibérique)
+27;57;14.mai;Planctonophage (krill et petits poissons);LC
+28;58;08.mai;Planctonophage (krill et petits poissons);LC
+29;59;2.0;Carnivore (poissons et calmars);LC
+30;60;01.mai;Carnivore (poissons et calmars);LC

@@ -1,0 +1,31 @@
+id_poissons;id_especes;taille_max;milieu;regime
+1;61;12.0;Marin pélagique;Planctonophage
+2;62;6.0;Marin pélagique;Carnivore (phoques et poissons)
+3;63;04.mars;Marin côtier;Carnivore (poissons et calmars)
+4;64;06.janv;Récifal;Carnivore (raies et poissons)
+5;65;03.mai;Marin pélagique;Carnivore (poissons et calmars)
+6;66;10.0;Marin pélagique;Planctonophage
+7;67;4.0;Marin pélagique;Carnivore (thons et calmars)
+8;68;7.0;Marin pélagique;Planctonophage
+9;69;7.0;Estuarien (mer et eau douce);Carnivore (poissons et crustacés)
+10;70;02.avr;Marin démersal (fonds);Carnivore (poissons plats et crustacés)
+11;71;01.mars;Catadrome (mer et eau douce);Carnivore (invertébrés et poissons)
+12;72;3.0;Anadrome (mer et eau douce);Carnivore (invertébrés du fond)
+13;73;02.mars;Récifal;Carnivore (mollusques et oursins)
+14;74;01.mars;Récifal;Corallivore
+15;75;02.mai;Récifal;Carnivore (poissons et crustacés)
+16;76;02.mai;Marin pélagique;Carnivore (poissons et calmars)
+17;77;2.0;Marin démersal (fonds);Carnivore (poissons)
+18;78;0.12;Estuarien (herbiers);Carnivore (petits crustacés)
+19;79;02.mai;Récifal;Carnivore (poissons)
+20;80;03.févr;Marin côtier;Carnivore (poissons)
+21;81;0.6;Marin pélagique;Carnivore (zooplancton et petits poissons)
+22;82;0.25;Marin pélagique;Planctonophage
+23;83;0.2;Marin pélagique;Planctonophage
+24;84;1.0;Marin côtier;Carnivore (poissons et crustacés)
+25;85;0.7;Marin côtier;Carnivore (coquillages et crustacés)
+26;86;2.0;Marin démersal (fonds);Carnivore (poissons et crustacés)
+27;87;03.mars;Marin pélagique;Carnivore (méduses)
+28;88;03.août;Marin pélagique;Carnivore (poissons et calmars)
+29;89;0.65;Marin côtier;Carnivore (mollusques et crustacés)
+30;90;01.mai;Récifal;Carnivore (poissons et poulpes)
