@@ -90,15 +90,6 @@ CREATE TABLE Favori (
     id_site_plongee INTEGER REFERENCES Site_plongee(id)
 );
 */
-CREATE TABLE Point_carte (
-    id INTEGER PRIMARY KEY,
-    titre VARCHAR(80),
-    description VARCHAR(500),
-    latitude DECIMAL(9,6),
-    longitude DECIMAL(9,6),
-    id_utilisateur INTEGER REFERENCES Utilisateur(id),
-    id_site_plongee INTEGER REFERENCES Site_plongee(id)
-);
 
 CREATE TABLE Poisson (
     id INTEGER PRIMARY KEY, 
