@@ -102,27 +102,24 @@ CREATE TABLE Point_carte (
 
 CREATE TABLE Poisson (
     id INTEGER PRIMARY KEY, 
+    id_especes INTEGER REFERENCES Especes(id)
     taille_max FLOAT,
     milieu VARCHAR(50),
     regime VARCHAR(100),
-    id_poissons INTEGER REFERENCES Poisson(id),
-    id_especes INTEGER REFERENCES Especes(id)
 );
 
 CREATE TABLE Mammiferes (
     id INTEGER PRIMARY KEY, 
+    id_especes INTEGER REFERENCES Especes(id)
     taille_moyenne FLOAT,
     regime VARCHAR(100),
     statut_conservation VARCHAR(60),
-    id_poissons INTEGER REFERENCES Poisson(id),
-    id_especes INTEGER REFERENCES Especes(id)
 );
 
 CREATE TABLE Coraux (
     id INTEGER PRIMARY KEY, 
+    id_especes INTEGER REFERENCES Especes(id)
     type_squelette VARCHAR(300),
     forme VARCHAR(100),
     couleur VARCHAR(50),
-    id_poissons INTEGER REFERENCES Poisson(id),
-    id_especes INTEGER REFERENCES Especes(id)
 );
