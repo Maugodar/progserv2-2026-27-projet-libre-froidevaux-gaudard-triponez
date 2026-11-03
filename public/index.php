@@ -39,19 +39,22 @@ $results = $stmt->fetchAll();
 
     <p>Bienvenue dans votre projet PHP pour le cours ProgServ2 à la HEIG-VD !</p>
 
+    <a href="carnetPlonge.php">Carnet de plongée</a>
+    <a href="connexion.php">Connexion</a>
+    <a href="especeFav.php">Especes favorites</a>
+
     <h2>Résultats de la base de données :</h2>
 
     <ul>
         <?php foreach ($results as $row) { ?>
             <li>ID: <?= htmlspecialchars($row['id']) ?>
                 <ul>
-                    <li>Nom commun : <?= htmlspecialchars($row['Nom_commun']) ?>
+                    <li>Nom commun : <?= htmlspecialchars($row['Nom_commun']) ?></li>
+                    <li>Nom scientifique : <?= htmlspecialchars($row['Nom_scientifique']) ?></li>
+                </ul>
             </li>
-            <li>Nom scientifique : <?= htmlspecialchars($row['Nom_scientifique']) ?></li>
+        <?php } ?>
     </ul>
-    </li>
-<?php } ?>
-</ul>
 </body>
 
 </html>
