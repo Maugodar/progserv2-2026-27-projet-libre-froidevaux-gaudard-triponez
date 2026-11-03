@@ -45,7 +45,7 @@ $results = $stmt->fetchAll();
         <?php foreach ($results as $row) { ?>
             <li>ID: <?= htmlspecialchars($row['id']) ?>
                 <ul>
-                    li>Nom commun : <?= htmlspecialchars($row['Nom_commun']) ?>
+                    <li>Nom commun : <?= htmlspecialchars($row['Nom_commun']) ?>
             </li>
             <li>Nom scientifique : <?= htmlspecialchars($row['Nom_scientifique']) ?></li>
     </ul>
