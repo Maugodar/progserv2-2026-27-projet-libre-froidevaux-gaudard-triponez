@@ -45,12 +45,13 @@ $results = $stmt->fetchAll();
         <?php foreach ($results as $row) { ?>
             <li>ID: <?= htmlspecialchars($row['id']) ?>
                 <ul>
-                    <li>Column1: <?= htmlspecialchars($row['column1']) ?></li>
-                    <li>Column2: <?= htmlspecialchars($row['column2']) ?></li>
-                </ul>
+                    li>Nom commun : <?= htmlspecialchars($row['Nom_commun']) ?>
             </li>
-        <?php } ?>
+            <li>Nom scientifique : <?= htmlspecialchars($row['Nom_scientifique']) ?></li>
     </ul>
+    </li>
+<?php } ?>
+</ul>
 </body>
 
 </html>
