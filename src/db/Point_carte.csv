@@ -1,4 +1,4 @@
-id_point_carte;titre;descritpion;latitude;longitude;id_utilisateur;id_site
+id;titre;descritpion;latitude;longitude;id_utilisateur;id_site
 1;Grotte du mérou;Cavité où un mérou brun s'approche des plongeurs.;42.0479;124244;1;1
 2;Surplomb de corail rouge;Beau surplomb sombre à 28 m, à voir à la lampe.;42.0459;133010;2;1
 3;Tombant de Banyuls;Mur rocheux avec mérous et gorgones.;42.4910;3.1708;2;4

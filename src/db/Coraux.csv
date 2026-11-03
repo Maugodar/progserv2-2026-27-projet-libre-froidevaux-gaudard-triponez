@@ -1,4 +1,4 @@
-id_coraux;id_especes;type_squelette;forme;couleur
+id;id_especes;type_squelette;forme;couleur
 1;1;Calcaire externe (scléractiniaire);Branchu (palmes aplaties);Brun jaunâtre
 2;2;Calcaire externe (scléractiniaire);Branchu (branches cylindriques);Brun beige
 3;3;Calcaire externe (scléractiniaire);Massif (dôme ou plaque);Brun vert

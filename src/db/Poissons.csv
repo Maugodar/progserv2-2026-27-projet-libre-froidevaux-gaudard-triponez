@@ -1,4 +1,4 @@
-id_poissons;id_especes;taille_max;milieu;regime
+id;id_especes;taille_max;milieu;regime
 1;61;12.0;Marin pélagique;Planctonophage
 2;62;6.0;Marin pélagique;Carnivore (phoques et poissons)
 3;63;04.mars;Marin côtier;Carnivore (poissons et calmars)

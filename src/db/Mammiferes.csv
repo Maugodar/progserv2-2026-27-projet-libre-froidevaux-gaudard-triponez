@@ -1,4 +1,4 @@
-id_mammiferes;id_especes;taille_moyenne;regime;statut_conservation
+id;id_especes;taille_moyenne;regime;statut_conservation
 1;31;01.avr;Carnivore (poissons et calmars);CR
 2;32;14;Planctonophage (copépodes);CR
 3;33;12;Carnivore (poissons et calmars);CR
