@@ -124,3 +124,5 @@ CREATE TABLE Coraux (
     id_poissons INTEGER REFERENCES Poisson(id),
     id_especes INTEGER REFERENCES Especes(id)
 );
+
+CREATE DATABASE IF NOT EXISTS 3v141w_heig_vd_ProgServ2; 

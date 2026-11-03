@@ -13,12 +13,8 @@ $database = $config['database'];
 $username = $config['username'];
 $password = $config['password'];
 
-$pdo = new PDO(
-    "mysql:host=$host;port=$port;dbname=$database;charset=utf8mb4",
-    $username,
-    $password
-);
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+$pdo = new PDO("mysql:host=$host;port=$port;dbname=$database;charset=utf8mb4", $username, $password);
 
 $sql = "SELECT * FROM Especes";
 
