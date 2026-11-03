@@ -28,6 +28,8 @@ CREATE TABLE Administrateur (
  
 CREATE TABLE Utilisateur (
     id INTEGER PRIMARY KEY,
+    niveau_plongee INTEGER,
+    date_inscription DATE,
     id_personne INTEGER REFERENCES Personne(id)
 );
  
