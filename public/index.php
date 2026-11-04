@@ -48,16 +48,14 @@ $results = $stmt->fetchAll();
         <li><a href="observation.php">Observation</a></li>
     </ul>
 
+    <h2>Page d'accueil</h2>
+
 
     <h2>Résultats de la base de données :</h2>
 
     <ul>
         <?php foreach ($results as $row) { ?>
-            <li>ID: <?= htmlspecialchars($row['id']) ?>
-                <ul>
-                    <li>Nom commun : <?= htmlspecialchars($row['Nom_commun']) ?></li>
-                    <li>Nom scientifique : <?= htmlspecialchars($row['Nom_scientifique']) ?></li>
-                </ul>
+            <li>ID: <?= htmlspecialchars($row['nom_commun']) ?>
             </li>
         <?php } ?>
     </ul>
