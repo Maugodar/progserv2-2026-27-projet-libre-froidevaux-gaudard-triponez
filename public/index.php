@@ -31,13 +31,13 @@ $results = $stmt->fetchAll();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ProgServ2 Course PHP Template</title>
+    <title>Mon Espace Marin</title>
 </head>
 
 <body>
-    <h1>ProgServ2 Course PHP Template</h1>
+    <h1>Page d'accueil</h1>
 
-    <p>Bienvenue dans votre projet PHP pour le cours ProgServ2 à la HEIG-VD !</p>
+    <p>Bienvenue dans votre espace marin, plus qu'un site, c'est un espace où vous pourrez découvrir et enregistrer vos observations marines !</p>
 
     <ul>
         <li>><a href="especes.php">Especes</a></li>
