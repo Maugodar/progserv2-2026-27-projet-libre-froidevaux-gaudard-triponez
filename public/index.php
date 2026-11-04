@@ -39,13 +39,14 @@ $results = $stmt->fetchAll();
 
     <p>Bienvenue dans votre projet PHP pour le cours ProgServ2 à la HEIG-VD !</p>
 
-    <a href="especes.php">Especes</a>
-    <a href="connexion.php">Connexion</a>
-    <a href="vueEnsemble.php">Vue d'ensemble</a>
-    <a href="carnetPlonge.php">Carnet de plongée</a>
-    <a href="especeFav.php">Especes favorites</a>
-    <a href="observation.php">Observation</a>
-
+    <ul>
+        <li>><a href="especes.php">Especes</a></li>
+        <li> <a href="connexion.php">Connexion</a></li>
+        <li> <a href="vueEnsemble.php">Vue d'ensemble</a></li>
+        <li><a href="carnetPlonge.php">Carnet de plongée</a></li>
+        <li><a href="especeFav.php">Especes favorites</a></li>
+        <li><a href="observation.php">Observation</a></li>
+    </ul>
 
 
     <h2>Résultats de la base de données :</h2>
