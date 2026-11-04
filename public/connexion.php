@@ -4,6 +4,9 @@ si on a pas de compte on doit en crée un
 A voir comment liée ça à la base de donnée -->
 <?php
 session_start();
+require_once __DIR__ . '/../src/User.php';
+require_once __DIR__ . '/../src/UserManager.php';
+
 
 const DATABASE_CONFIGURATION_FILE = __DIR__ . '/../config/database.ini'; //connexion a la BD
 
@@ -29,7 +32,7 @@ $pdo = new PDO(
     ]
 );
 
-class Validateur {
+class Validateur { //vérification de donnée saisie 
     public static function nettoyer(string $valeur): string {
         return trim(strip_tags($valeur));
     }
@@ -43,73 +46,17 @@ class Validateur {
     }
 }
 
-class UtilisateurRepository {
-    public function __construct(private PDO $pdo) {
-    }
-
-    public function emailExiste(string $email): bool {
-        $stmt = $this->pdo->prepare("SELECT 1 FROM Personne WHERE Email = :e");
-        $stmt->execute(['e' => $email]);
-        return (bool)$stmt->fetchColumn();
-    }
-
-    public function inscrire(string $nom, string $prenom, string $email, string $mdp): int {
-        $this->pdo->beginTransaction();
-        try {
-            $stmt = $this->pdo->prepare(
-                "INSERT INTO Personne (Nom, Prenom, Email, mot_de_passe) VALUES (:n, :p, :e, :m)"
-            );
-            $stmt->execute([
-                'n' => $nom,
-                'p' => $prenom,
-                'e' => $email,
-                'm' => password_hash($mdp, PASSWORD_DEFAULT),
-            ]);
-            $idPersonne = (int)$this->pdo->lastInsertId();
-
-            $stmt = $this->pdo->prepare(
-                "INSERT INTO Utilisateur (niveau_plongee, date_inscription, id_personne) VALUES (1, :d, :p)"
-            );
-            $stmt->execute(['d' => date('Y-m-d'), 'p' => $idPersonne]);
-            $idUtilisateur = (int)$this->pdo->lastInsertId();
-
-            $this->pdo->commit();
-            return $idUtilisateur;
-        } catch (Throwable $e) {
-            $this->pdo->rollBack();
-            throw $e;
-        }
-    }
-
-    /** Retourne l'id de l'utilisateur si les identifiants sont corrects, sinon null. */
-    public function connecter(string $email, string $mdp): ?int {
-        $stmt = $this->pdo->prepare(
-            "SELECT p.mot_de_passe, u.id AS id_utilisateur
-             FROM Personne p
-             JOIN Utilisateur u ON u.id_personne = p.id
-             WHERE p.Email = :e"
-        );
-        $stmt->execute(['e' => $email]);
-        $ligne = $stmt->fetch();
-
-        if ($ligne && password_verify($mdp, $ligne['mot_de_passe'])) {
-            return (int)$ligne['id_utilisateur'];
-        }
-        return null;
-    }
-}
-
-$repo = new UtilisateurRepository($pdo);
+$repo = new UserManager($pdo);
 $erreurs = [];
 $message = '';
 
-if (isset($_GET['deconnexion'])) {
+if (isset($_GET['deconnexion'])) { //Déconnexion
     session_destroy();
     header('Location: connexion.php');
     exit;
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') { //traitement du formulaire
     $action = $_POST['action'] ?? '';
     $email = Validateur::nettoyer($_POST['email'] ?? '');
     $mdp = $_POST['mot_de_passe'] ?? '';
@@ -131,7 +78,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $erreurs[] = "Cette adresse e-mail est déjà utilisée.";
         }
         if (empty($erreurs)) {
-            $id = $repo->inscrire($nom, $prenom, $email, $mdp);
+            $user = new User(null, $nom, $prenom, $email, $mdp);
+            $id = $repo->inscrire($user);
             session_regenerate_id(true);
             $_SESSION['id_utilisateur'] = $id;
             header('Location: carnetPlonge.php');

@@ -36,11 +36,11 @@ $pdo = new PDO(
     ]
 );
 
-class PlongeeRepository {
+class PlongeeRepository { //
     public function __construct(private PDO $pdo) {
     }
 
-    public function lister(int $idUtilisateur): array {
+    public function lister(int $idUtilisateur): array { //recup les plongée utilisateur
         $stmt = $this->pdo->prepare(
             "SELECT p.*, s.Nom AS site
              FROM Plongee p
@@ -52,17 +52,17 @@ class PlongeeRepository {
         return $stmt->fetchAll();
     }
 
-    public function sites(): array {
+    public function sites(): array { //List des sites
         return $this->pdo->query("SELECT id, Nom FROM Site_plongee ORDER BY Nom")->fetchAll();
     }
 
-    public function siteExiste(int $idSite): bool {
+    public function siteExiste(int $idSite): bool { //verif que le site existe
         $stmt = $this->pdo->prepare("SELECT 1 FROM Site_plongee WHERE id = :id");
         $stmt->execute(['id' => $idSite]);
         return (bool)$stmt->fetchColumn();
     }
 
-    public function ajouter(array $d, int $idUtilisateur): void {
+    public function ajouter(array $d, int $idUtilisateur): void { //requete prep pour inserer une nouvelle plongée
         $stmt = $this->pdo->prepare(
             "INSERT INTO Plongee (date_plongee, profondeur_max, duree, temps_fond, temperature,
                                   visibilite, notes_personnelles, notation, id_site_plongee, id_utilisateur)
@@ -72,7 +72,7 @@ class PlongeeRepository {
     }
 }
 
-$repo = new PlongeeRepository($pdo);
+$repo = new PlongeeRepository($pdo); //Formulaire d'ajout
 $erreurs = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$plongees = $repo->lister($idUtilisateur);
+$plongees = $repo->lister($idUtilisateur); //Prépar de l'affichage
 $afficherForm = isset($_GET['ajouter']) || !empty($erreurs);
 $sites = $afficherForm ? $repo->sites() : [];
 ?>
