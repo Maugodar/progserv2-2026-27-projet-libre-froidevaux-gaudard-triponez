@@ -110,7 +110,7 @@
             <?php } ?>
         </ul>
 
-        <h2>Ajouter un favori</h2>
+        <h2>Ajouter un favori</h2><!--Formulaire pour ajouter une espece en favori -->
         <form method="get">
             <input type="text" name="recherche" value="<?= htmlspecialchars($terme) ?>">
             <button type="submit">Rechercher</button>

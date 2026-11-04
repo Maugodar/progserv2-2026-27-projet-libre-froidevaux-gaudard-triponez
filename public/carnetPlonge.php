@@ -103,7 +103,7 @@
         <a href="index.php">Accueil</a>
         <h1>Mon carnet de plongée</h1>
 
-        <?php if (!$afficherForm) { ?>
+        <?php if (!$afficherForm) { ?> <!--Formulaire pour ajouter une plongée -->
             <a href="carnetPlonge.php?ajouter=1"><button>Ajouter une plongée</button></a>
         <?php } else { ?>
             <h2>Nouvelle plongée</h2>

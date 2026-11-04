@@ -1,13 +1,13 @@
-id_site_plongee;nom;mer_region;pays;latitude;longitude
-1;Œles Medes;MÈditerranÈe (Costa Brava);Espagne;42.0467;127896
-2;Port-Cros;MÈditerranÈe (cÙte d'Azur);France;43.0058;738673
-3;RÈserve de Scandola;MÈditerranÈe (Corse);France;42.3700;1315087
-4;CerbËre-Banyuls;MÈditerranÈe (golfe du Lion);France;42.4900;3.1700
-5;Archipel de MolËne;Atlantique (mer d'Iroise);France;48.3900;-4.9600
-6;Los Cristianos (Tenerife);Atlantique (Óles Canaries);Espagne;28.0500;-16.7100
-7;RÈcif de Saint-Gilles;OcÈan Indien (La RÈunion);France;-21.0600;55.2200
-8;Passe en S (Mayotte);OcÈan Indien (lagon de Mayotte);France;-12.9900;45.0600
-9;Ras Mohammed;Mer Rouge;…gypte;27.7300;34.2500
-10;Atoll d'Ari Sud;OcÈan Indien (Maldives);Maldives;1132313;72.8500
-11;Molasses Reef (Key Largo);Atlantique (CaraÔbes, Floride);…tats-Unis;25.0100;-80.3800
-12;Œle de Wolf (Gal·pagos);Pacifique est;…quateur;693963;-91.8200
+id;nom;mer_region;pays;latitude;longitude
+;√éles Medes;M√©diterran√©e (Costa Brava);Espagne;42.0467;3.2250
+;Port-Cros;M√©diterran√©e (c√¥te d'Azur);France;43.0058;6.3922
+;R√©serve de Scandola;M√©diterran√©e (Corse);France;42.3700;8.5500
+;Cerb√®re-Banyuls;M√©diterran√©e (golfe du Lion);France;42.4900;3.1700
+;Archipel de Mol√®ne;Atlantique (mer d'Iroise);France;48.3900;-4.9600
+;Los Cristianos (Tenerife);Atlantique (√Æles Canaries);Espagne;28.0500;-16.7100
+;R√©cif de Saint-Gilles;Oc√©an Indien (La R√©union);France;-21.0600;55.2200
+;Passe en S (Mayotte);Oc√©an Indien (lagon de Mayotte);France;-12.9900;45.0600
+;Ras Mohammed;Mer Rouge;√âgypte;27.7300;34.2500
+;Atoll d'Ari Sud;Oc√©an Indien (Maldives);Maldives;3.5000;72.8500
+;Molasses Reef (Key Largo);Atlantique (Cara√Øbes, Floride);√âtats-Unis;25.0100;-80.3800
+;√éle de Wolf (Gal√°pagos);Pacifique est;√âquateur;1.3800;-91.8200
