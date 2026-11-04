@@ -16,7 +16,7 @@ $password = $config['password'];
 
 $pdo = new PDO("mysql:host=$host;port=$port;dbname=$database;charset=utf8mb4", $username, $password);
 
-$sql = "SELECT * FROM Especes";
+$sql = "SELECT nom_commun FROM Especes";
 
 $stmt = $pdo->prepare($sql);
 
@@ -39,9 +39,14 @@ $results = $stmt->fetchAll();
 
     <p>Bienvenue dans votre projet PHP pour le cours ProgServ2 à la HEIG-VD !</p>
 
-    <a href="carnetPlonge.php">Carnet de plongée</a>
+    <a href="especes.php">Especes</a>
     <a href="connexion.php">Connexion</a>
+    <a href="vueEnsemble.php">Vue d'ensemble</a>
+    <a href="carnetPlonge.php">Carnet de plongée</a>
     <a href="especeFav.php">Especes favorites</a>
+    <a href="observation.php">Observation</a>
+
+
 
     <h2>Résultats de la base de données :</h2>
 
