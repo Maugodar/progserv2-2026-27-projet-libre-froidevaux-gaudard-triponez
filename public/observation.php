@@ -5,6 +5,7 @@
  * Données lues et écrites dans la table Observation.
  * POO : classe Observation + ObservationRepository.
  */
+session_start();
 require_once __DIR__ . '/Database.php';
 
 class Observation {
