@@ -5,7 +5,15 @@
  * Données calculées depuis la base (tables Plongee, Observation, Favori, Especes).
  * POO : classe VueEnsemble qui regroupe les statistiques d'un utilisateur.
  */
-require_once __DIR__ . '/Database.php';
+session_start();
+
+if (!isset($_SESSION['id_utilisateur'])) {
+    header('Location: connexion.php');
+    exit;
+}
+$idUtilisateur = (int)$_SESSION['id_utilisateur']; //récupère l'id de l'utilisateur connecter
+
+require_once __DIR__ . '/../src/Database.php';
 
 class VueEnsemble {
     public function __construct(private PDO $pdo, private int $idUtilisateur) {
@@ -38,7 +46,6 @@ class VueEnsemble {
     }
 }
 
-$idUtilisateur = 1; // temporaire, remplacé par l'utilisateur connecté plus tard
 $vue = new VueEnsemble(Database::getConnexion(), $idUtilisateur);
 ?>
 
@@ -53,6 +60,7 @@ $vue = new VueEnsemble(Database::getConnexion(), $idUtilisateur);
 
 <body>
     <a href="index.php">Accueil</a>
+    <a href="connexion.php?deconnexion=1">Se déconnecter</a>
     <h1>Vue d'ensemble</h1>
 
     <ul>

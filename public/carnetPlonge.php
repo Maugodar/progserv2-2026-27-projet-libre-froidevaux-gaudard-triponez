@@ -1,16 +1,15 @@
-<!--Carnet de plongée :
-- liste les plongées de l'utilisateur connecté (données de la BD)
-- formulaire pour ajouter une plongée (site, date, prof. max, durée, temps au fond, température, visibilité, note /5, notes perso)
-- liens vers les autres pages -->
-
 <?php
+// Carnet de plongée :
+// - liste les plongées de l'utilisateur connecté (données de la BD)
+// - formulaire pour ajouter une plongée (site, date, prof. max, durée, temps au fond, température, visibilité, note /5, notes perso)
+// - liens vers les autres pages
 session_start();
 
 if (!isset($_SESSION['id_utilisateur'])) {
     header('Location: connexion.php');
     exit;
 }
-$idUtilisateur = (int)$_SESSION['id_utilisateur'];
+$idUtilisateur = (int)$_SESSION['id_utilisateur']; //récupère l'id de l'utilisateur connecter
 
 const DATABASE_CONFIGURATION_FILE = __DIR__ . '/../config/database.ini'; //connexion à la BD
 
@@ -36,11 +35,11 @@ $pdo = new PDO(
     ]
 );
 
-class PlongeeRepository { //
+class PlongeeRepository { //accès BD pour les plongées
     public function __construct(private PDO $pdo) {
     }
 
-    public function lister(int $idUtilisateur): array { //recup les plongée utilisateur
+    public function lister(int $idUtilisateur): array { //récupère les plongées de l'utilisateur
         $stmt = $this->pdo->prepare(
             "SELECT p.*, s.Nom AS site
              FROM Plongee p
@@ -52,17 +51,17 @@ class PlongeeRepository { //
         return $stmt->fetchAll();
     }
 
-    public function sites(): array { //List des sites
+    public function sites(): array { //liste des sites
         return $this->pdo->query("SELECT id, Nom FROM Site_plongee ORDER BY Nom")->fetchAll();
     }
 
-    public function siteExiste(int $idSite): bool { //verif que le site existe
+    public function siteExiste(int $idSite): bool { //vérifie que le site existe
         $stmt = $this->pdo->prepare("SELECT 1 FROM Site_plongee WHERE id = :id");
         $stmt->execute(['id' => $idSite]);
         return (bool)$stmt->fetchColumn();
     }
 
-    public function ajouter(array $d, int $idUtilisateur): void { //requete prep pour inserer une nouvelle plongée
+    public function ajouter(array $d, int $idUtilisateur): void { //insère une nouvelle plongée
         $stmt = $this->pdo->prepare(
             "INSERT INTO Plongee (date_plongee, profondeur_max, duree, temps_fond, temperature,
                                   visibilite, notes_personnelles, notation, id_site_plongee, id_utilisateur)
@@ -72,10 +71,10 @@ class PlongeeRepository { //
     }
 }
 
-$repo = new PlongeeRepository($pdo); //Formulaire d'ajout
+$repo = new PlongeeRepository($pdo);
 $erreurs = [];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') { //formulaire d'ajout
     $site = (int)($_POST['site'] ?? 0);
 
     if (!$repo->siteExiste($site)) {
@@ -97,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$plongees = $repo->lister($idUtilisateur); //Prépar de l'affichage
+$plongees = $repo->lister($idUtilisateur); //préparation de l'affichage
 $afficherForm = isset($_GET['ajouter']) || !empty($erreurs);
 $sites = $afficherForm ? $repo->sites() : [];
 ?>

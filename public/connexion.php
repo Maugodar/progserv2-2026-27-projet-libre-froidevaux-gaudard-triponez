@@ -1,12 +1,9 @@
-<!--Formulaire de connexion
-demande adresse e-mail et mdp
-si on a pas de compte on doit en crée un
-A voir comment liée ça à la base de donnée -->
 <?php
+// Formulaire de connexion : demande adresse e-mail et mot de passe.
+// Si la personne n'a pas de compte, elle peut en créer un (inscription).
 session_start();
 require_once __DIR__ . '/../src/User.php';
 require_once __DIR__ . '/../src/UserManager.php';
-
 
 const DATABASE_CONFIGURATION_FILE = __DIR__ . '/../config/database.ini'; //connexion a la BD
 
@@ -32,13 +29,13 @@ $pdo = new PDO(
     ]
 );
 
-class Validateur { //vérification de donnée saisie 
+class Validateur { //vérification de donnée saisie
     public static function nettoyer(string $valeur): string {
         return trim(strip_tags($valeur));
     }
 
     public static function emailValide(string $email): bool {
-        return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
+        return filter_var($email, FILTER_VALIDATE_EMAIL) !== false && strlen($email) <= 60;
     }
 
     public static function motDePasseValide(string $mdp): bool {
@@ -48,7 +45,6 @@ class Validateur { //vérification de donnée saisie
 
 $repo = new UserManager($pdo);
 $erreurs = [];
-$message = '';
 
 if (isset($_GET['deconnexion'])) { //Déconnexion
     session_destroy();
@@ -64,13 +60,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') { //traitement du formulaire
     if (!Validateur::emailValide($email)) {
         $erreurs[] = "Adresse e-mail invalide.";
     }
-    if (!Validateur::motDePasseValide($mdp)) {
-        $erreurs[] = "Le mot de passe doit contenir au moins 8 caractères.";
-    }
 
     if ($action === 'inscription') {
         $nom = Validateur::nettoyer($_POST['nom'] ?? '');
         $prenom = Validateur::nettoyer($_POST['prenom'] ?? '');
+
+        if (!Validateur::motDePasseValide($mdp)) {
+            $erreurs[] = "Le mot de passe doit contenir au moins 8 caractères.";
+        }
         if ($nom === '' || $prenom === '') {
             $erreurs[] = "Nom et prénom obligatoires.";
         }
@@ -131,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') { //traitement du formulaire
         <label>Nom <input type="text" name="nom" required></label><br>
         <label>Prénom <input type="text" name="prenom" required></label><br>
         <label>E-mail <input type="email" name="email" required></label><br>
-        <label>Mot de passe <input type="password" name="mot_de_passe" required></label><br>
+        <label>Mot de passe <input type="password" name="mot_de_passe" required minlength="8"></label><br>
         <button type="submit">S'inscrire</button>
     </form>
 </body>
