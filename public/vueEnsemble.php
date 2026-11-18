@@ -13,7 +13,7 @@ if (!isset($_SESSION['id_utilisateur'])) {
 }
 $idUtilisateur = (int)$_SESSION['id_utilisateur']; //récupère l'id de l'utilisateur connecter
 
-require_once __DIR__ . '/../src/Database.php';
+require_once __DIR__ . '/Database.php';
 
 class VueEnsemble {
     public function __construct(private PDO $pdo, private int $idUtilisateur) {

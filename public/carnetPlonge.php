@@ -128,7 +128,7 @@ $sites = $afficherForm ? $repo->sites() : [];
             <label>Site
                 <select name="site" required>
                     <?php foreach ($sites as $s) { ?>
-                        <option value="<?= (int)$s['id'] ?>"><?= htmlspecialchars($s['Nom']) ?></option>
+                        <option value="<?= (int)$s['id'] ?>"><?= htmlspecialchars($s['Nom']) ?></option> <!--htmlspecialchers pour échaper les caractères spéciaux-->
                     <?php } ?>
                 </select>
             </label><br>

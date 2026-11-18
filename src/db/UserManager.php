@@ -11,8 +11,8 @@
     public function inscrire(User $user): int {
         $this->pdo->beginTransaction();
         try {
-            $stmt = $this->pdo->prepare(
-                "INSERT INTO Personne (Nom, Prenom, Email, mot_de_passe) VALUES (:n, :p, :e, :m)"
+            $stmt = $this->pdo->prepare( //On prépare la requête SQL
+                "INSERT INTO Personne (Nom, Prenom, Email, mot_de_passe) VALUES (:n, :p, :e, :m)" //: et pas " pour éviter les injection SQL
             );
             $stmt->execute([
                 'n' => $user->getNom(),
@@ -25,7 +25,7 @@
             $stmt = $this->pdo->prepare(
                 "INSERT INTO Utilisateur (niveau_plongee, date_inscription, id_personne) VALUES (1, :d, :p)"
             );
-            $stmt->execute(['d' => date('Y-m-d'), 'p' => $idPersonne]);
+            $stmt->execute(['d' => date('Y-m-d'), 'p' => $idPersonne]); //On exécute la requête SQL 
             $idUtilisateur = (int)$this->pdo->lastInsertId();
 
             $this->pdo->commit();
