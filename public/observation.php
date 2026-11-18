@@ -20,6 +20,7 @@ class Observation {
 
 class ObservationRepository {
     public function __construct(private PDO $pdo) {
+        
     }
 
     public function lister(int $idUtilisateur): array {
@@ -55,7 +56,21 @@ class ObservationRepository {
         return $stmt->fetchAll();
     }
 
+    /* AVANT Sécurité
     public function ajouter(string $date, string $lieu, int $idUtilisateur, int $idEspece, int $idPlongee): void {
+        $stmt = $this->pdo->prepare(
+            "INSERT INTO Observation (date_observation, lieu_observation, id_utilisateur, id_especes, id_plongee)
+             VALUES (:d, :l, :u, :e, :p)"
+        );
+        $stmt->execute(['d' => $date, 'l' => $lieu, 'u' => $idUtilisateur, 'e' => $idEspece, 'p' => $idPlongee]);
+    }  APRèS*/
+        public function ajouter(string $date, string $lieu, int $idUtilisateur, int $idEspece, int $idPlongee): void {
+                $check = $this->pdo->prepare("SELECT 1 FROM Plongee WHERE id = :p AND id_utilisateur = :u");
+                $check->execute(['p' => $idPlongee, 'u' => $idUtilisateur]);
+            if (!$check->fetchColumn()) {
+                return; // plongée inexistante ou d'un autre utilisateur
+        }
+
         $stmt = $this->pdo->prepare(
             "INSERT INTO Observation (date_observation, lieu_observation, id_utilisateur, id_especes, id_plongee)
              VALUES (:d, :l, :u, :e, :p)"
@@ -75,14 +90,15 @@ $repo = new ObservationRepository(Database::getConnexion());
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (($_POST['action'] ?? '') === 'supprimer') {
         $repo->supprimer((int)($_POST['id'] ?? 0), $idUtilisateur);
-    } else {
-        $repo->ajouter(
-            $_POST['date'] ?? '',
-            trim(strip_tags($_POST['lieu'] ?? '')),
-            $idUtilisateur,
-            (int)($_POST['espece'] ?? 0),
-            (int)($_POST['plongee'] ?? 0)
-        );
+        } else {
+        $date = is_string($_POST['date'] ?? null) ? $_POST['date'] : '';
+        $d = DateTime::createFromFormat('Y-m-d', $date);
+        $dateValide = $d && $d->format('Y-m-d') === $date; // date réelle au format aaaa-mm-jj
+        $lieu = is_string($_POST['lieu'] ?? null) ? mb_substr(trim(strip_tags($_POST['lieu'])), 0, 80) : ''; // nettoyé et limité à 80 caractères
+
+        if ($dateValide) {
+            $repo->ajouter($date, $lieu, $idUtilisateur, (int)($_POST['espece'] ?? 0), (int)($_POST['plongee'] ?? 0));
+        }
     }
     header('Location: observation.php');
     exit;

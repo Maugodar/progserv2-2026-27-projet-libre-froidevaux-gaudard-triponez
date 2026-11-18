@@ -90,8 +90,13 @@ class EspecesRepository {
 
 $repo = new EspecesRepository(Database::getConnexion());
 
-$terme = trim(strip_tags($_GET['recherche'] ?? ''));
-$type = (string)($_GET['type'] ?? '');
+//avant sécutité
+//$terme = trim(strip_tags($_GET['recherche'] ?? ''));
+//$type = (string)($_GET['type'] ?? '');
+//après 
+$terme = is_string($_GET['recherche'] ?? null) ? trim(strip_tags($_GET['recherche'])) : '';
+$type = $_GET['type'] ?? '';
+$type = is_string($type) && isset(EspecesRepository::TYPES[$type]) ? $type : '';
 $idDetail = (int)($_GET['id'] ?? 0);
 
 $espece = $idDetail > 0 ? $repo->trouver($idDetail) : null;
