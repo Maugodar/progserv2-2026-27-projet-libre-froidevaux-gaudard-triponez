@@ -72,6 +72,7 @@ class ObservationRepository {
         }
 
         $stmt = $this->pdo->prepare(
+            //éviter l'injection SQL
             "INSERT INTO Observation (date_observation, lieu_observation, id_utilisateur, id_especes, id_plongee)
              VALUES (:d, :l, :u, :e, :p)"
         );
