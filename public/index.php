@@ -40,7 +40,7 @@ $results = $stmt->fetchAll();
     <p>Bienvenue dans votre espace marin, plus qu'un site, c'est un espace où vous pourrez découvrir et enregistrer vos observations marines !</p>
 
     <ul>
-        <li>><a href="especes.php">Especes</a></li>
+        <li><a href="especes.php">Especes</a></li>
         <li> <a href="connexion.php">Connexion</a></li>
         <li> <a href="vueEnsemble.php">Vue d'ensemble</a></li>
         <li><a href="carnetPlonge.php">Carnet de plongée</a></li>
