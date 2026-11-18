@@ -23,7 +23,7 @@ class ObservationRepository {
         
     }
 
-    public function lister(int $idUtilisateur): array {
+    public function lister(int $_SESSION['id_utilisateur']): array {
         $stmt = $this->pdo->prepare(
             "SELECT o.id, o.date_observation, o.lieu_observation, e.Nom_commun, s.Nom AS site
              FROM Observation o
@@ -33,7 +33,7 @@ class ObservationRepository {
              WHERE o.id_utilisateur = :u
              ORDER BY o.date_observation DESC"
         );
-        $stmt->execute(['u' => $idUtilisateur]);
+        $stmt->execute(['u' => $_SESSION['id_utilisateur']]);
 
         $observations = [];
         foreach ($stmt->fetchAll() as $l) {
@@ -46,13 +46,13 @@ class ObservationRepository {
         return $this->pdo->query("SELECT id, Nom_commun FROM Especes ORDER BY Nom_commun")->fetchAll();
     }
 
-    public function plongees(int $idUtilisateur): array {
+    public function plongees(int $_SESSION['id_utilisateur']): array {
         $stmt = $this->pdo->prepare(
             "SELECT p.id, p.date_plongee, s.Nom AS site
              FROM Plongee p JOIN Site_plongee s ON s.id = p.id_site_plongee
              WHERE p.id_utilisateur = :u ORDER BY p.date_plongee DESC"
         );
-        $stmt->execute(['u' => $idUtilisateur]);
+        $stmt->execute(['u' => $_SESSION['id_utilisateur']]);
         return $stmt->fetchAll();
     }
 
@@ -64,9 +64,9 @@ class ObservationRepository {
         );
         $stmt->execute(['d' => $date, 'l' => $lieu, 'u' => $idUtilisateur, 'e' => $idEspece, 'p' => $idPlongee]);
     }  APRèS*/
-        public function ajouter(string $date, string $lieu, int $idUtilisateur, int $idEspece, int $idPlongee): void {
+        public function ajouter(string $date, string $lieu, int $_SESSION['id_utilisateur'], int $idEspece, int $idPlongee): void {
                 $check = $this->pdo->prepare("SELECT 1 FROM Plongee WHERE id = :p AND id_utilisateur = :u");
-                $check->execute(['p' => $idPlongee, 'u' => $idUtilisateur]);
+                $check->execute(['p' => $idPlongee, 'u' => $_SESSION['id_utilisateur']]);
             if (!$check->fetchColumn()) {
                 return; // plongée inexistante ou d'un autre utilisateur
         }
@@ -75,12 +75,12 @@ class ObservationRepository {
             "INSERT INTO Observation (date_observation, lieu_observation, id_utilisateur, id_especes, id_plongee)
              VALUES (:d, :l, :u, :e, :p)"
         );
-        $stmt->execute(['d' => $date, 'l' => $lieu, 'u' => $idUtilisateur, 'e' => $idEspece, 'p' => $idPlongee]);
+        $stmt->execute(['d' => $date, 'l' => $lieu, 'u' => $_SESSION['id_utilisateur'], 'e' => $idEspece, 'p' => $idPlongee]);
     }
 
-    public function supprimer(int $id, int $idUtilisateur): void {
+    public function supprimer(int $id, int $_SESSION['id_utilisateur']): void {
         $stmt = $this->pdo->prepare("DELETE FROM Observation WHERE id = :id AND id_utilisateur = :u");
-        $stmt->execute(['id' => $id, 'u' => $idUtilisateur]);
+        $stmt->execute(['id' => $id, 'u' => $_SESSION['id_utilisateur']]);
     }
 }
 
@@ -89,7 +89,7 @@ $repo = new ObservationRepository(Database::getConnexion());
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (($_POST['action'] ?? '') === 'supprimer') {
-        $repo->supprimer((int)($_POST['id'] ?? 0), $idUtilisateur);
+        $repo->supprimer((int)($_POST['id'] ?? 0), $_SESSION['id_utilisateur']);
         } else {
         $date = is_string($_POST['date'] ?? null) ? $_POST['date'] : '';
         $d = DateTime::createFromFormat('Y-m-d', $date);
@@ -97,16 +97,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $lieu = is_string($_POST['lieu'] ?? null) ? mb_substr(trim(strip_tags($_POST['lieu'])), 0, 80) : ''; // nettoyé et limité à 80 caractères
 
         if ($dateValide) {
-            $repo->ajouter($date, $lieu, $idUtilisateur, (int)($_POST['espece'] ?? 0), (int)($_POST['plongee'] ?? 0));
+            $repo->ajouter($date, $lieu, $_SESSION['id_utilisateur'], (int)($_POST['espece'] ?? 0), (int)($_POST['plongee'] ?? 0));
         }
     }
     header('Location: observation.php');
     exit;
 }
 
-$observations = $repo->lister($idUtilisateur);
+$observations = $repo->lister($_SESSION['id_utilisateur']);
 $especes = $repo->especes();
-$plongees = $repo->plongees($idUtilisateur);
+$plongees = $repo->plongees($_SESSION['id_utilisateur']);
 ?>
 
 <!DOCTYPE html>
