@@ -120,6 +120,7 @@ $plongees = $repo->plongees($_SESSION['id_utilisateur']);
 
 <body>
     <a href="index.php">Accueil</a>
+    <a href="connexion.php?deconnexion=1">Se déconnecter</a>
     <h1>Mes observations</h1>
 
     <h2>Nouvelle observation</h2>
