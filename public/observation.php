@@ -23,7 +23,7 @@ class ObservationRepository {
         
     }
 
-    public function lister(int $_SESSION['id_utilisateur']): array {
+    public function lister([int $_SESSION['id_utilisateur']]): array {
         $stmt = $this->pdo->prepare(
             "SELECT o.id, o.date_observation, o.lieu_observation, e.Nom_commun, s.Nom AS site
              FROM Observation o
