@@ -2,8 +2,8 @@
 // Formulaire de connexion : demande adresse e-mail et mot de passe.
 // Si la personne n'a pas de compte, elle peut en créer un (inscription).
 session_start();
-require_once __DIR__ . '/../src/User.php';
-require_once __DIR__ . '/../src/UserManager.php';
+require_once __DIR__ . '/../src/db/User.php';
+require_once __DIR__ . '/../src/db/UserManager.php';
 
 const DATABASE_CONFIGURATION_FILE = __DIR__ . '/../config/database.ini'; //connexion a la BD
 
@@ -47,6 +47,7 @@ $repo = new UserManager($pdo);
 $erreurs = [];
 
 if (isset($_GET['deconnexion'])) { //Déconnexion
+    $_SESSION = [];
     session_destroy();
     header('Location: connexion.php');
     exit;
