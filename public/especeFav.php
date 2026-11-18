@@ -62,10 +62,10 @@ class FavoriRepository { //accès BD pour les favoris
         $stmt = $this->pdo->prepare(
             "INSERT INTO Favori (id_utilisateur, id_especes)
              SELECT :u, :e FROM DUAL
-             WHERE NOT EXISTS (SELECT 1 FROM Favori WHERE id_utilisateur = :u2 AND id_especes = :e2)
-               AND EXISTS (SELECT 1 FROM Especes WHERE id = :e3)"
+             WHERE NOT EXISTS (SELECT 1 FROM Favori WHERE id_utilisateur = :u AND id_especes = :e)
+               AND EXISTS (SELECT 1 FROM Especes WHERE id = :e)"
         );
-        $stmt->execute(['u' => $idUtilisateur, 'e' => $idEspece, 'u2' => $idUtilisateur, 'e2' => $idEspece, 'e3' => $idEspece]);
+        $stmt->execute(['u' => $idUtilisateur, 'e' => $idEspece]);
     }
 
     public function supprimer(int $idUtilisateur, int $idEspece): void {
