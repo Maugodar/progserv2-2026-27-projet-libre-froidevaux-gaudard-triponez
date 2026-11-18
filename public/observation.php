@@ -13,7 +13,7 @@ if (!isset($_SESSION['id_utilisateur'])) {
 }
 $idUtilisateur = (int)$_SESSION['id_utilisateur'];
 
-require_once __DIR__ . '/../src/Database.php';
+require_once __DIR__ . '/Database.php';
 
 class Observation {
     public function __construct(
